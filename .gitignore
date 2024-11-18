@@ -1,0 +1,5 @@
+__pycache__
+media/*
+.cache
+hand_gesture
+Test
