@@ -43,13 +43,32 @@ def previous_track():
         print("Error going back to previous track:", e)
 
 def volume_up():
-    current_volume = sp.current_playback()["device"]["volume_percent"]
-    new_volume = min(100, current_volume + 10)
-    sp.volume(new_volume)
-    print(f"Volume up: {new_volume}%")
+    try:
+        current_volume = sp.current_playback()["device"]["volume_percent"]
+        new_volume = min(100, current_volume + 10)
+        sp.volume(new_volume)
+        print(f"Volume up: {new_volume}%")
+    except Exception as e:
+        print("Error adjusting volume up:", e)
 
 def volume_down():
-    current_volume = sp.current_playback()["device"]["volume_percent"]
-    new_volume = max(0, current_volume - 10)
-    sp.volume(new_volume)
-    print(f"Volume down: {new_volume}%")
+    try:
+        current_volume = sp.current_playback()["device"]["volume_percent"]
+        new_volume = max(0, current_volume - 10)
+        sp.volume(new_volume)
+        print(f"Volume down: {new_volume}%")
+    except Exception as e:
+        print("Error adjusting volume down:", e)
+
+def handle_gesture(gesture):
+    """Handle gestures for Spotify control."""
+    if gesture == "Open Hand":  # Play
+        play_spotify()
+    elif gesture == "Closed Fist":  # Pause
+        pause_spotify()
+    elif gesture == "Two Fingers Up":  # Next Track
+        next_track()
+    elif gesture == "One Finger Up":  # Volume Up
+        volume_up()
+    elif gesture == "Pinky Finger Up":  # Volume Down
+        volume_down()
