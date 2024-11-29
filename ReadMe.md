@@ -2,7 +2,7 @@
 
 This project uses **Python**, **OpenCV**, **MediaPipe**, **Spotipy**, and **python-vlc** to control both VLC and Spotify using hand gestures detected through your webcam. The system allows you to play/pause music, change tracks, and adjust volume using intuitive hand gestures.
 
-## 📋 Project Structure
+## Project Structure
 
 ```
 project_folder/
@@ -13,7 +13,9 @@ project_folder/
 └── media/
     ├── song1.mp3
     ├── song2.mp3
-    └── ...
+└── utils/
+    └── spotify_credentials.py
+    ```
 ```
 
 ### Files:
@@ -22,6 +24,7 @@ project_folder/
 - `spotify_controller.py`: Manages Spotify playback using gestures.
 - `main.py`: Orchestrates the gesture detection and controls either VLC or Spotify based on a command-line flag.
 - `media/`: Folder containing your `.mp3` files for VLC playback.
+- `utils/spotify_credentials.py`: contains the file where you should add your spotify credentials to connect to spotify
 
 ## Features
 
@@ -34,12 +37,12 @@ project_folder/
 
 ## Prerequisites
 
-Ensure you have **Python 3** installed on your system.
+Ensure you have **Python 3** and **VLC Media Player** installed on your system.
 
-### Install the required libraries:
+### Install the required libraries Throught The Requirements File:
 
 ```bash
-pip install opencv-python mediapipe python-vlc spotipy
+pip install -r requirements.txt
 ```
 
 ### Spotify Setup
@@ -48,7 +51,7 @@ pip install opencv-python mediapipe python-vlc spotipy
    - Create a new app and get your **Client ID** and **Client Secret**.
    - Set the Redirect URI to `http://localhost:8888/callback`.
 
-2. Update `spotify_credentials.py` with your credentials:
+2. Update `utils/spotify_credentials.py` with your credentials:
    ```python
    SPOTIPY_CLIENT_ID = 'your_client_id'
    SPOTIPY_CLIENT_SECRET = 'your_client_secret'
@@ -61,7 +64,7 @@ pip install opencv-python mediapipe python-vlc spotipy
 2. Add your `.mp3` music files to the `media/` folder for VLC playback.
 3. Make sure your webcam is connected and accessible.
 
-## ▶Running the Project
+## Running the Project
 
 ### Usage
 The `main.py` script accepts a flag to choose between **VLC** or **Spotify** mode:
@@ -93,7 +96,7 @@ The `main.py` script accepts a flag to choose between **VLC** or **Spotify** mod
    - 🤙 **Pinky Finger Up**: Decrease volume.
 
 3. **Cooldown Period**:
-   - A **5-second delay** is set between consecutive gesture actions to prevent accidental triggers.
+   - A **3-second delay** is set between consecutive gesture actions to prevent accidental triggers.
 
 ## Troubleshooting
 

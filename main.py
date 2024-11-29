@@ -23,7 +23,7 @@ cap = cv2.VideoCapture(0)
 
 # Gesture cooldown settings
 last_gesture_time = time.time()
-gesture_cooldown = 5  # 5 seconds cooldown between gestures
+gesture_cooldown = 3  # 3 seconds cooldown between gestures
 
 # Start MediaPipe Hands with a single hand detection
 with mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.5, min_tracking_confidence=0.5) as hands:
