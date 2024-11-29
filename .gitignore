@@ -1,5 +1,6 @@
 __pycache__
-media/*
+media/* 
+!.gitignore
 .cache
 hand_gesture
 Test
